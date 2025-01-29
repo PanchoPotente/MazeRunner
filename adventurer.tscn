@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://di3q6xtg3q6jw"]
+
+[ext_resource type="Texture2D" uid="uid://bhi58gfk1y4lk" path="res://sprites/adventurer/GraveRobber_idle.png" id="1_eig8n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocpmu"]
+atlas = ExtResource("1_eig8n")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kledv"]
+atlas = ExtResource("1_eig8n")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtbqk"]
+atlas = ExtResource("1_eig8n")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quhoe"]
+atlas = ExtResource("1_eig8n")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jvcn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocpmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kledv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtbqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quhoe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="adventurer" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8jvcn")
+autoplay = "default"
+frame_progress = 0.86674

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3141xdlvvjy2"]
+
+[ext_resource type="Texture2D" uid="uid://cdn08h8vopn2o" path="res://sprites/axeman/Woodcutter_idle.png" id="1_hjgav"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfynq"]
+atlas = ExtResource("1_hjgav")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53ufu"]
+atlas = ExtResource("1_hjgav")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb7ud"]
+atlas = ExtResource("1_hjgav")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igjfr"]
+atlas = ExtResource("1_hjgav")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3gr4d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfynq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53ufu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb7ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igjfr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="axe-man" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3gr4d")
+autoplay = "default"
+frame_progress = 0.637081

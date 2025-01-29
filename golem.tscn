@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bay7hinv3hvk8"]
+
+[ext_resource type="Texture2D" uid="uid://cf5cqdlfopjt5" path="res://sprites/golem/Idle.png" id="1_cg2ye"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqxl8"]
+atlas = ExtResource("1_cg2ye")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qae7"]
+atlas = ExtResource("1_cg2ye")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onxit"]
+atlas = ExtResource("1_cg2ye")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqnch"]
+atlas = ExtResource("1_cg2ye")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xo7g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqxl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qae7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onxit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqnch")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="golem" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8xo7g")
+autoplay = "default"

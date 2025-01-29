@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6yomlgu8carr"]
+
+[ext_resource type="Texture2D" uid="uid://bm5oyj5to5kfh" path="res://sprites/priest/Old_woman_idle.png" id="1_7tttv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7l4e"]
+atlas = ExtResource("1_7tttv")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r801"]
+atlas = ExtResource("1_7tttv")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgerd"]
+atlas = ExtResource("1_7tttv")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6tx3"]
+atlas = ExtResource("1_7tttv")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3530l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7l4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r801")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgerd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6tx3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Priest" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3530l")
+autoplay = "default"
+frame_progress = 0.690722

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://3erwdg8b0de4"]
+
+[ext_resource type="Texture2D" uid="uid://do0htrpcau41c" path="res://sprites/mummy/Deceased_idle.png" id="1_3prnk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbg6d"]
+atlas = ExtResource("1_3prnk")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkuya"]
+atlas = ExtResource("1_3prnk")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htvib"]
+atlas = ExtResource("1_3prnk")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4athb"]
+atlas = ExtResource("1_3prnk")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q8qq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbg6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkuya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htvib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4athb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="mummy" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_q8qq5")
+autoplay = "default"
+frame_progress = 0.948057
+flip_h = true
