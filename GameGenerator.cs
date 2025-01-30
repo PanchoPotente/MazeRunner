@@ -20,7 +20,7 @@ public partial class GameGenerator : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		maze = new Maze(new Player[] {new Player(UnitType.AxeMan), new Player(UnitType.Priest)});
+		maze = new Maze(new Player[] {new Player(UnitType.Golem), new Player(UnitType.Priest)});
 		UpdateWalls();
 		UpdateTraps();
 		AdjustCamera();
@@ -54,6 +54,15 @@ public partial class GameGenerator : Node2D
 		{
 			maze.NextTurn();
 		}
+		if(Input.IsActionJustPressed("skill_activate"))
+		{
+			GD.Print("Is activate");
+			if(maze.CurrentPlayer.IsSkillActive)
+			{
+				maze.ActivateSkill();
+				UpdateAll();
+			}
+		}
 	}
 
 	private void UpdateWalls()
@@ -64,6 +73,10 @@ public partial class GameGenerator : Node2D
 			{
 				if(!maze.WallMap[i,j])
 				Laberinto.SetCell(new Vector2I(i,j), 0, new Vector2I(8,1));
+				else
+				{
+					Laberinto.SetCell(new Vector2I(i,j), -1);
+				}
 			}
 		}
 	} 
@@ -193,6 +206,12 @@ public partial class GameGenerator : Node2D
 	{
 		Vector2 localPos = Laberinto.MapToLocal(maze.CurrentPlayer.Position);
 		CurrentNode.Position = Laberinto.ToGlobal(localPos);
+		UpdateTraps();
+	}
+
+	private void UpdateAll()
+	{
+		UpdateWalls();
 		UpdateTraps();
 	}
 }

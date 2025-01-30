@@ -51,6 +51,7 @@ class Player
             break;
         }
         RefreshMovements();
+        TurnsPased = coolDown ;
     }
 
 
@@ -58,26 +59,31 @@ class Player
     {
         Speed = 5;
         LifePoints = 6;
+        coolDown = 2;
     }
     private void MakePriest()
     {
         Speed = 4;
         LifePoints = 5;
+        coolDown = 2;
     }
     private void MakeAdventurer()
     {
         Speed = 5;
         LifePoints = 5;
+        coolDown = 2;
     }
     private void MakeGolem()
     {
         Speed = 3;
         LifePoints = 8;
+        coolDown = 3;
     }
     private void MakeMummy()
     {
         Speed = 10;
         LifePoints = 2;
+        coolDown = 0;
 
     }
 

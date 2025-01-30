@@ -158,14 +158,23 @@ class Maze
             switch(CurrentPlayer.Type)
             {
                 case UnitType.AxeMan:
+                AxeManSkill();
                 break;
+
                 case UnitType.Priest:
+                PriestSkill();
                 break;
+
                 case UnitType.Adventurer:
+                AdventurerSkill();
                 break;
+
                 case UnitType.Golem:
+                GolemSkill();
                 break;
+
                 case UnitType.Mummy:
+                MummySkill();
                 break;
             }
         }
@@ -175,7 +184,7 @@ class Maze
 
     private void GolemSkill()
     {
-        int[][] directions = new int[][] { new int[] { 0, 2 }, new int[] { 0, -2 }, new int[] { 2, 0 }, new int[] { -2, 0 } };
+        int[][] directions = new int[][] { new int[] { 0, 1 }, new int[] { 0, -1 }, new int[] { 1, 0 }, new int[] { -1, 0 } };
         Shuffle(directions);
         for (int i = 0; i < directions.Length; i++)
         {
@@ -197,6 +206,39 @@ class Maze
     {
         CurrentPlayer.Damage(1);
         CurrentPlayer.Movements += CurrentPlayer.Speed;
+    }
+
+    private void AdventurerSkill()
+    {
+        int[][] directions = new int[][] { new int[] { 0, 1 }, new int[] { 0, -1 }, new int[] { 1, 0 }, new int[] { -1, 0 } };
+        for (int i = 0; i < directions.Length; i++)
+        {
+            int x = CurrentPlayer.Position.X;
+            int y = CurrentPlayer.Position.Y;
+            for (int j = 0; j < 3; j++)
+            {
+                x +=  directions[i][0];
+                y += directions[i][1];
+                if(IsInRange(x , y))  TrapMap[x,y] = 0;
+                else break;
+            }
+        }
+    }
+    private void AxeManSkill()
+    {
+        int[][] directions = new int[][] { new int[] { 0, 1 }, new int[] { 0, -1 }, new int[] { 1, 0 }, new int[] { -1, 0 } };
+        for (int i = 0; i < directions.Length; i++)
+        {
+            Vector2I vector = new Vector2I(CurrentPlayer.Position.X + directions[i][0], CurrentPlayer.Position.Y + directions[i][1]);
+            for (int j = 0; j < PlayerList.Length; j++)
+            {
+                if(PlayerList[j].Position == vector)
+                {
+                    Random random = new Random();
+                    PlayerList[j].Damage(random.Next(0,4));
+                }
+            }
+        }
     }
 
 }
