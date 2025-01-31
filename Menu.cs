@@ -10,7 +10,7 @@ public partial class Menu : Control
 
     public void _on_options_pressed()
     {
-        
+        GetTree().ChangeSceneToFile("res://instrucciones.tscn");
     }
 
     public void _on_exit_pressed()

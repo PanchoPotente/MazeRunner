@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx2vu2lcxrcuo"]
+
+[ext_resource type="Texture2D" uid="uid://cvdbft5lxt0ah" path="res://sprites/dungeon background 6.png" id="1_0myf6"]
+[ext_resource type="Script" path="res://Instrucciones.cs" id="1_ckxj4"]
+
+[node name="Instrucciones" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ckxj4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0myf6")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 81.0
+offset_top = -177.0
+offset_right = -84.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Objetivo" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Objetivo : El objetivo del juego es llegar a la salida del laberinto antes que tu oponente
+
+Controles : Usa las flechas direccionales para moverte, con Espacio pasas el turno y con Enter activas la habilidad del personaje.
+
+Personajes : Hay 5 personajes cada uno con su propia habilidad única :
+   Axe-Man ; Puede causarle una cantidad aleatoria de daño de entre 0 y 3 al jugador en una casilla vecina
+   Adventurer : Puede desactivar trampas cercanas en su rango de visión
+   Golem ; Puede destruir un muro aledaño de manera aleatoria
+   Priest : Puede sanarse a si misma
+   Mummy : Puede sacrificar un puto de vida a cambio de aumentar la cantidad de veces que se puede mover por turno
+
+Muerte : Si la vida de tu personaje llega a cero este morirá y tendrá que reiniciar desde la primera casilla"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -157.0
+offset_top = 47.0
+offset_right = 117.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "Instrucciones"
+uppercase = true
+
+[node name="Salir" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = -75.0
+offset_right = 39.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Salir
+"
+
+[connection signal="pressed" from="Salir" to="." method="on_salir_pressed"]
