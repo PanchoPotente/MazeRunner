@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-enum UnitType
+public enum UnitType
 {
     AxeMan,
     Priest,

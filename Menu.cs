@@ -5,7 +5,7 @@ public partial class Menu : Control
 {
 	public void _on_play_pressed()
     {
-        
+        GetTree().ChangeSceneToFile("res://seleccion.tscn");
     }
 
     public void _on_options_pressed()

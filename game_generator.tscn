@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://sg655tvitcu8"]
+[gd_scene load_steps=8 format=3 uid="uid://sg655tvitcu8"]
 
 [ext_resource type="Script" path="res://GameGenerator.cs" id="1_s6eym"]
 [ext_resource type="Texture2D" uid="uid://bwl4qex0r6ae6" path="res://world_tileset.png" id="2_7hwr5"]
+[ext_resource type="Script" path="res://PlayerInfo.cs" id="3_ccrlb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gohra"]
 texture = ExtResource("2_7hwr5")
@@ -269,12 +270,14 @@ texture = ExtResource("2_7hwr5")
 [sub_resource type="TileSet" id="TileSet_gasjs"]
 sources/0 = SubResource("TileSetAtlasSource_pe3a8")
 
-[node name="GameGenerator" type="Node2D" node_paths=PackedStringArray("Laberinto", "Trampas", "Camera", "Players")]
+[node name="GameGenerator" type="Node2D" node_paths=PackedStringArray("Laberinto", "Trampas", "Camera", "Players", "PlayerInfo1", "PlayerInfo2")]
 script = ExtResource("1_s6eym")
 Laberinto = NodePath("Laberinto")
 Trampas = NodePath("Trampas")
 Camera = NodePath("Camera2D")
 Players = [NodePath("Player1"), NodePath("Player2")]
+PlayerInfo1 = NodePath("CanvasLayer/Player1Info")
+PlayerInfo2 = NodePath("CanvasLayer/Player2Info")
 
 [node name="Laberinto" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)
@@ -290,3 +293,66 @@ anchor_mode = 0
 [node name="Trampas" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_gasjs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Player1Info" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Life", "Moves")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("3_ccrlb")
+Life = NodePath("InfoLife")
+Moves = NodePath("InfoMov")
+
+[node name="InfoLife" type="Label" parent="CanvasLayer/Player1Info"]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 2.0
+offset_right = 45.0
+offset_bottom = 25.0
+text = "Life :  0"
+uppercase = true
+
+[node name="InfoMov" type="Label" parent="CanvasLayer/Player1Info"]
+layout_mode = 0
+offset_left = -38.0
+offset_top = 29.0
+offset_right = 18.0
+offset_bottom = 52.0
+text = "Moves :  0"
+uppercase = true
+
+[node name="Player2Info" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Life", "Moves")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 69.0
+offset_bottom = 109.0
+grow_horizontal = 0
+script = ExtResource("3_ccrlb")
+Life = NodePath("InfoLife")
+Moves = NodePath("InfoMov")
+
+[node name="InfoLife" type="Label" parent="CanvasLayer/Player2Info"]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 2.0
+offset_right = 45.0
+offset_bottom = 25.0
+text = "Life :  0"
+uppercase = true
+
+[node name="InfoMov" type="Label" parent="CanvasLayer/Player2Info"]
+layout_mode = 0
+offset_left = -38.0
+offset_top = 29.0
+offset_right = 18.0
+offset_bottom = 52.0
+text = "Moves :  0"
+uppercase = true

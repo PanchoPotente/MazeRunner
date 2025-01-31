@@ -95,6 +95,7 @@ class Maze
             }
         }
         TrapMap[0,0] = 0;
+        TrapMap[32,18] = 0;
     }
 
     public void NextTurn() 

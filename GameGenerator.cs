@@ -8,6 +8,9 @@ public partial class GameGenerator : Node2D
 	[Export] TileMapLayer Trampas;
 	[Export] Camera2D Camera;
 	[Export] Node2D[] Players;
+
+	[Export] Control PlayerInfo1; 
+	[Export] Control PlayerInfo2; 
 	private Node2D CurrentNode
 	{
 		get
@@ -20,11 +23,12 @@ public partial class GameGenerator : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		maze = new Maze(new Player[] {new Player(UnitType.Golem), new Player(UnitType.Priest)});
+		maze = new Maze(new Player[] {new Player(Global.FirstPlayer), new Player(Global.SecondPlayer)});
 		UpdateWalls();
 		UpdateTraps();
 		AdjustCamera();
 		CreatePlayers();
+		Laberinto.SetCell(new Vector2I(32,18),0, new Vector2I(0,2));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,6 +57,7 @@ public partial class GameGenerator : Node2D
 		if(Input.IsActionJustPressed("turn_change"))
 		{
 			maze.NextTurn();
+			UpdatePlayerInfo();
 		}
 		if(Input.IsActionJustPressed("skill_activate"))
 		{
@@ -62,6 +67,10 @@ public partial class GameGenerator : Node2D
 				maze.ActivateSkill();
 				UpdateAll();
 			}
+		}
+		if(maze.CurrentPlayer.Position == new Vector2I(32,18))
+		{
+			GetTree().ChangeSceneToFile("res://Seleccion.cs");
 		}
 	}
 
@@ -160,6 +169,7 @@ public partial class GameGenerator : Node2D
 			}
 			
 		}
+		UpdatePlayerInfo();
 	}
 	private void CreateAxeMan(int i)
 	{
@@ -207,11 +217,22 @@ public partial class GameGenerator : Node2D
 		Vector2 localPos = Laberinto.MapToLocal(maze.CurrentPlayer.Position);
 		CurrentNode.Position = Laberinto.ToGlobal(localPos);
 		UpdateTraps();
+		UpdatePlayerInfo();
 	}
 
 	private void UpdateAll()
 	{
 		UpdateWalls();
 		UpdateTraps();
+		UpdatePlayerInfo();
+	}
+
+	private void UpdatePlayerInfo()
+	{
+		PlayerInfo FirstPlayer = GetNode<PlayerInfo>("/root/GameGenerator/CanvasLayer/Player1Info");
+		PlayerInfo SecondPlayer = GetNode<PlayerInfo>("/root/GameGenerator/CanvasLayer/Player2Info");
+		SecondPlayer.UpdateStats(maze.PlayerList[1].LifePoints, maze.PlayerList[1].Movements);
+		FirstPlayer.UpdateStats(maze.PlayerList[0].LifePoints, maze.PlayerList[0].Movements);
+		
 	}
 }
