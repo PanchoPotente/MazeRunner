@@ -28,7 +28,7 @@ public partial class GameGenerator : Node2D
 		UpdateTraps();
 		AdjustCamera();
 		CreatePlayers();
-		Laberinto.SetCell(new Vector2I(32,18),0, new Vector2I(0,2));
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -61,16 +61,15 @@ public partial class GameGenerator : Node2D
 		}
 		if(Input.IsActionJustPressed("skill_activate"))
 		{
-			GD.Print("Is activate");
 			if(maze.CurrentPlayer.IsSkillActive)
 			{
 				maze.ActivateSkill();
 				UpdateAll();
 			}
 		}
-		if(maze.CurrentPlayer.Position == new Vector2I(32,18))
+		if(maze.CurrentPlayer.Position.X == 32 && maze.CurrentPlayer.Position.Y == 18)
 		{
-			GetTree().ChangeSceneToFile("res://Seleccion.cs");
+			GetTree().ChangeSceneToFile("res://seleccion.tscn");
 		}
 	}
 
@@ -88,6 +87,7 @@ public partial class GameGenerator : Node2D
 				}
 			}
 		}
+		Laberinto.SetCell(new Vector2I(32,18),0, new Vector2I(0,2));
 	} 
 	private void UpdateTraps()
 	{
@@ -214,17 +214,19 @@ public partial class GameGenerator : Node2D
 
 	private void UpdateCurrentNode()
 	{
-		Vector2 localPos = Laberinto.MapToLocal(maze.CurrentPlayer.Position);
-		CurrentNode.Position = Laberinto.ToGlobal(localPos);
+		Vector2 localPos = Laberinto.MapToLocal(maze.PlayerList[0].Position);
+		Players[0].Position = Laberinto.ToGlobal(localPos);
+		Vector2 localPos2 = Laberinto.MapToLocal(maze.PlayerList[1].Position);
+		Players[1].Position = Laberinto.ToGlobal(localPos2);
 		UpdateTraps();
 		UpdatePlayerInfo();
 	}
 
 	private void UpdateAll()
 	{
+		UpdateCurrentNode();
 		UpdateWalls();
 		UpdateTraps();
-		UpdatePlayerInfo();
 	}
 
 	private void UpdatePlayerInfo()
