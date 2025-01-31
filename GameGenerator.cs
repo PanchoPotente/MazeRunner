@@ -233,8 +233,8 @@ public partial class GameGenerator : Node2D
 	{
 		PlayerInfo FirstPlayer = GetNode<PlayerInfo>("/root/GameGenerator/CanvasLayer/Player1Info");
 		PlayerInfo SecondPlayer = GetNode<PlayerInfo>("/root/GameGenerator/CanvasLayer/Player2Info");
-		SecondPlayer.UpdateStats(maze.PlayerList[1].LifePoints, maze.PlayerList[1].Movements);
-		FirstPlayer.UpdateStats(maze.PlayerList[0].LifePoints, maze.PlayerList[0].Movements);
+		SecondPlayer.UpdateStats(maze.PlayerList[1].LifePoints, maze.PlayerList[1].Movements, maze.PlayerList[1].IsSkillActive);
+		FirstPlayer.UpdateStats(maze.PlayerList[0].LifePoints, maze.PlayerList[0].Movements, maze.PlayerList[0].IsSkillActive);
 		
 	}
 }

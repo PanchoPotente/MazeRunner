@@ -6,9 +6,13 @@ public partial class PlayerInfo : Control
 	[Export] Label Life;
 	[Export] Label Moves;
 
-	public void UpdateStats(int lp, int mov)
+	[Export] Label Skill;
+
+	public void UpdateStats(int lp, int mov, bool skill)
 	{
 		Life.Text = "Life :  " + lp;
 		Moves.Text = "Moves :  " + mov;
+		if(skill) Skill.Text = "Skill : SI";
+		else Skill.Text = "Skill : NO";
 	}
 }

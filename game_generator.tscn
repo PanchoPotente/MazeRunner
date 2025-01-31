@@ -270,14 +270,12 @@ texture = ExtResource("2_7hwr5")
 [sub_resource type="TileSet" id="TileSet_gasjs"]
 sources/0 = SubResource("TileSetAtlasSource_pe3a8")
 
-[node name="GameGenerator" type="Node2D" node_paths=PackedStringArray("Laberinto", "Trampas", "Camera", "Players", "PlayerInfo1", "PlayerInfo2")]
+[node name="GameGenerator" type="Node2D" node_paths=PackedStringArray("Laberinto", "Trampas", "Camera", "Players")]
 script = ExtResource("1_s6eym")
 Laberinto = NodePath("Laberinto")
 Trampas = NodePath("Trampas")
 Camera = NodePath("Camera2D")
 Players = [NodePath("Player1"), NodePath("Player2")]
-PlayerInfo1 = NodePath("CanvasLayer/Player1Info")
-PlayerInfo2 = NodePath("CanvasLayer/Player2Info")
 
 [node name="Laberinto" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)
@@ -296,7 +294,7 @@ tile_set = SubResource("TileSet_gasjs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Player1Info" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Life", "Moves")]
+[node name="Player1Info" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Life", "Moves", "Skill")]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -308,6 +306,7 @@ grow_horizontal = 0
 script = ExtResource("3_ccrlb")
 Life = NodePath("InfoLife")
 Moves = NodePath("InfoMov")
+Skill = NodePath("InfoSkill")
 
 [node name="InfoLife" type="Label" parent="CanvasLayer/Player1Info"]
 layout_mode = 0
@@ -320,26 +319,36 @@ uppercase = true
 
 [node name="InfoMov" type="Label" parent="CanvasLayer/Player1Info"]
 layout_mode = 0
-offset_left = -38.0
-offset_top = 29.0
-offset_right = 18.0
-offset_bottom = 52.0
+offset_left = -37.0
+offset_top = 26.0
+offset_right = 45.0
+offset_bottom = 49.0
 text = "Moves :  0"
 uppercase = true
 
-[node name="Player2Info" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Life", "Moves")]
+[node name="InfoSkill" type="Label" parent="CanvasLayer/Player1Info"]
+layout_mode = 0
+offset_left = -37.0
+offset_top = 52.0
+offset_right = 47.0
+offset_bottom = 75.0
+text = "Skill :  no"
+uppercase = true
+
+[node name="Player2Info" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Life", "Moves", "Skill")]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -62.0
-offset_top = 69.0
+offset_top = 84.0
 offset_right = -14.0
-offset_bottom = 109.0
+offset_bottom = 124.0
 grow_horizontal = 0
 script = ExtResource("3_ccrlb")
 Life = NodePath("InfoLife")
 Moves = NodePath("InfoMov")
+Skill = NodePath("InfoSkill")
 
 [node name="InfoLife" type="Label" parent="CanvasLayer/Player2Info"]
 layout_mode = 0
@@ -352,9 +361,18 @@ uppercase = true
 
 [node name="InfoMov" type="Label" parent="CanvasLayer/Player2Info"]
 layout_mode = 0
-offset_left = -38.0
+offset_left = -36.0
 offset_top = 29.0
-offset_right = 18.0
+offset_right = 46.0
 offset_bottom = 52.0
 text = "Moves :  0"
+uppercase = true
+
+[node name="InfoSkill" type="Label" parent="CanvasLayer/Player2Info"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 56.0
+offset_right = 48.0
+offset_bottom = 79.0
+text = "skill : NO"
 uppercase = true
